@@ -3,6 +3,6 @@ puts-step() {
 }
 
 set-env() {
-  PROFILE_PATH="$BUILD_DIR/.profile.d/swift.sh"
+  PROFILE_PATH="$APP_DIR/.profile.d/swift.sh"
   echo "export $1=$2" >> $PROFILE_PATH
 }

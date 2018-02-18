@@ -7,6 +7,7 @@ set -o pipefail
 BIN_DIR=$(cd $(dirname $0); pwd)
 ROOT_DIR=$(dirname $BIN_DIR)
 
+APP_DIR=$1
 BUILD_DIR=$1/api
 CACHE_DIR=$2
 ENV_DIR=$3
@@ -43,9 +44,10 @@ source "$BIN_DIR/steps/swift-build"
 source "$BIN_DIR/steps/swift-install"
 
 # Setup application environment
-mkdir -p $BUILD_DIR/.profile.d
+mkdir -p $APP_DIR/.profile.d
 
 set-env PATH '$HOME/.swift-bin:$PATH'
 set-env LD_LIBRARY_PATH '$LD_LIBRARY_PATH:$HOME/.swift-lib'
+set-env APP_DIR "$APP_DIR"
 
 source "$BIN_DIR/steps/hooks/post_compile"
